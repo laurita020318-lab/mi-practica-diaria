@@ -1,0 +1,17 @@
+name: Exercism Sync
+
+on:
+  schedule:
+    # Se ejecuta automáticamente cada día a las 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Te permite ejecutar la sincronización manualmente con un botón
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Exercism Solutions
+        uses: NDevox/exercism-sync-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          exercism_token: ${{ secrets.EXERCISM_TOKEN }}
